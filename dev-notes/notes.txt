@@ -1,0 +1,11 @@
+/Chris
+ - Temp changes made to package.json test script
+  orignal code
+          "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
+  changes to
+              "test": "npm run lint"
+
+  will review when mocha is setup
+
+  // -------------------------------------------------------------
+

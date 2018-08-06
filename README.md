@@ -1,21 +1,7 @@
 # Waste-Relations
 
+This app will help you to find out where to properly dispose of garbage, recycling, organics and other items in your building.
 
-## Front-end
+Find donation centers for items that are still in good condition.
 
-* Mobile First approach
-* Use Animate.css || Hover.css
-* Use Flexbox for layouts
-
-
-## npm
-Travis CI
-
-
-
-## code
-* DRY code
-* Pure functions
-* Dont use global vars if possible
-* ES6 only
-
+[Live Preview](https://wasterelations.herokuapp.com/)
