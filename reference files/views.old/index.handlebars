@@ -1,0 +1,29 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}} to Waste Relations</h1>
+        <h2>Waste Management Services</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="userEntered">Search our Database!</label>
+            <input type="text" id="userEntered" class="form-control" aria-describedby="user selection" placeholder="Enter Example Text">
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Search</button>
+        </form>
+        <h3>Examples:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
