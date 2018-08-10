@@ -4,4 +4,4 @@ This app will help you to find out where to properly dispose of garbage, recycli
 
 Find donation centers for items that are still in good condition.
 
-[Live Preview](https://wasterelations.herokuapp.com/)
+<a href="https://wasterelations.herokuapp.com/" target="_blank">Live Preview</a>
