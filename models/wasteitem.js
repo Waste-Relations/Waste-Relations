@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  WasteItem.associate = function(models) {
-    // associations can be defined here
-  };
+  // WasteItem.associate = function(models) {
+  //   // associations can be defined here
+  // };
   return WasteItem;
 };
