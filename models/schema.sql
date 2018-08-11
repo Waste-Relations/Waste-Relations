@@ -1,3 +1,0 @@
-DROP DATABASE IF EXISTS wastedb;
-CREATE DATABASE wastedb;
-USE wastedb;
