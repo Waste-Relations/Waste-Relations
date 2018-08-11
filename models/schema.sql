@@ -1,6 +1,3 @@
-Drop database if exists;
-
-Create database wastedb;
-
-use wastedb;
-
+DROP DATABASE IF EXISTS wastedb;
+CREATE DATABASE wastedb;
+USE wastedb;
