@@ -1,16 +1,16 @@
 'use strict';
 const data = require("./output.js");
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+    up: (queryInterface, Sequelize) => {
 
-      return queryInterface.bulkInsert('wasteitems', data,{});
+        return queryInterface.bulkInsert('wasteitems', data, {});
 
-  },
+    },
 
-  down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('wasteitems', null, {});
+    down: (queryInterface, Sequelize) => {
+        return queryInterface.bulkDelete('wasteitems', null, {});
 
-  }
+    }
 };
 
 //
