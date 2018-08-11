@@ -1,7 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("Example", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT
+  var WasteTable = sequelize.define("WasteTable", {
+    category: DataTypes.TEXT,
+    name: DataTypes.TEXT,
+    subCategory: DataTypes.TEXT
   });
-  return Example;
+  return WasteTable;
 };

@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "kghost",
-    "database": "exampledb",
+    "database": "wastedb",
     "host": "localhost",
     "dialect": "mysql"
   },
