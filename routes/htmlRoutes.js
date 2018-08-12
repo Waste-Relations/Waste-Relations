@@ -18,10 +18,10 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  app.get("/search", function(req, res) {
-    // If the user already has an account send them to the search page
-    req.user ? res.render("search") : res.render("index");
-  });
+  // app.get("/search", function(req, res) {
+  //   // If the user already has an account send them to the search page
+  //   req.user ? res.render("search") : res.render("index");
+  // });
 
   app.get("/result", function(req, res) {
     // If the user already has an account send them to the result page
@@ -51,5 +51,12 @@ module.exports = function(app) {
   app.get("/charity", function(req, res) {
     // If the user already has an account send them to the charity page
     req.user ? res.render("charity") : res.render("index");
+  });
+
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/search", isAuthenticated, function(req, res) {
+    res.render("search");
+    // res.sendFile(path.join(__dirname, "../public/search.html"));
   });
 };
