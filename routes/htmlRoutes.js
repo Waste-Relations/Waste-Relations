@@ -21,13 +21,14 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  app.get("/search", function(req, res) {
-    // If the user already has an account send them to the search page
-    req.user ? res.render("search") : res.render("index");
-    db.WasteItem.findOne({}).then(function() {
-      res.render("result");
-    });
-  });
+  // app.get("/search", function(req, res) {
+  //   // If the user already has an account send them to the search page
+  //   req.user ? res.render("search") : res.render("index");
+
+  //   // db.WasteItem.findOne({}).then(function() {
+  //   //   res.render("result");
+  //   // });
+  // });
 
   // NOt tested
   app.get("/result", function(req, res) {
@@ -63,6 +64,9 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
+    // db.WasteItem.findOne({}).then(function() {
+    //   res.render("result");
+    // });
     res.render("search");
     // res.sendFile(path.join(__dirname, "../public/search.html"));
   });
