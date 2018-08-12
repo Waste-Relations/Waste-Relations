@@ -9,8 +9,10 @@ var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
 if (config.use_env_variable) {
+  // the application is executed on Heroku ...
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
+  // the application is executed on the local machine ... use mysql
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
