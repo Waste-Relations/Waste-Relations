@@ -5,12 +5,15 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.WasteItem.findAll({}).then(function() {
-      res.render("index");
-    });
+    // db.WasteItem.findAll({}).then(function() {
+    res.render("index");
+    // });
   });
-  //
+
   app.get("/login", function(req, res) {
+    if (req.user) {
+      res.redirect("/search");
+    }
     res.render("login");
   });
 
@@ -18,11 +21,15 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  // app.get("/search", function(req, res) {
-  //   // If the user already has an account send them to the search page
-  //   req.user ? res.render("search") : res.render("index");
-  // });
+  app.get("/search", function(req, res) {
+    // If the user already has an account send them to the search page
+    req.user ? res.render("search") : res.render("index");
+    db.WasteItem.findOne({}).then(function() {
+      res.render("result");
+    });
+  });
 
+  // NOt tested
   app.get("/result", function(req, res) {
     // If the user already has an account send them to the result page
     req.user ? res.render("result") : res.render("index");
