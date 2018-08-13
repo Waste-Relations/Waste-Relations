@@ -14,8 +14,11 @@ const PORT = process.env.PORT || 3000;
 // Creating express app and configuring middleware needed for authentication
 const app = express();
 // Middleware
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
 app.use(bodyParser.json());
+// Static directory
 app.use(express.static("public"));
 // We need to use sessions to keep track of our user's login status
 app.use(

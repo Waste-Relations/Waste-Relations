@@ -64,10 +64,25 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
-    // db.WasteItem.findOne({}).then(function() {
-    //   res.render("result");
-    // });
     res.render("search");
     // res.sendFile(path.join(__dirname, "../public/search.html"));
+  });
+  //
+  app.get("/search:search", isAuthenticated, function(req, res) {
+    try {
+      db.WasteItem.findOne({
+        where: {
+          category: "Garbage"
+        }
+      }).then(function(result) {
+        let data = result.dataValues;
+        res.render("search", {
+          searchRes: data
+        });
+        console.log("got here. somekinda of db happneded. ", data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   });
 };

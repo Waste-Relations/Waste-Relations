@@ -4,14 +4,26 @@
 </div>
 
 <div>
-  <input type="text" name="search" id="shearchBox" placeholder="Search">
+  <form>
+    <input type="text" name="search" id="searchBox" placeholder="Search">
+  </form>
+</div>
+
+<div>
+  <ul id="" class="">
+    {{#each searchRes}}
+    <li data-id="{{this.id}}" class="list-group-item">
+      {{this.name}}
+    </li>
+    {{/each}}
+  </ul>
 </div>
 
 <div>
   <p>
-    <a href="/profile">My Profile</a>
-  </p>
-  <p>
     <a href="/logout">Logout</a>
   </p>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
