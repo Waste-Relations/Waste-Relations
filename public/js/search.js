@@ -1,4 +1,4 @@
-// something here
+/* eslint-disable */
 $(document).keypress(e => {
   if (e.which === 13) {
     const userSearch = $("#searchBox")
