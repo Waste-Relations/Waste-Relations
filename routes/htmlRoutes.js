@@ -82,22 +82,22 @@ module.exports = function(app) {
     }
     // res.sendFile(path.join(__dirname, "../public/search.html"));
   });
-  //
-  app.get("/search:search", isAuthenticated, function(req, res) {
-    // try {
-    //   db.WasteItem.findOne({
-    //     where: {
-    //       category: "Garbage"
-    //     }
-    //   }).then(function(result) {
-    //     let data = result.dataValues;
-    //     res.render("search", {
-    //       searchRes: data
-    //     });
-    //     console.log("got here. somekinda of db happneded. ", data);
-    //   });
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  });
+  // hello just disabled
+  // app.get("/search:search", isAuthenticated, function(req, res) {
+  //   // try {
+  //   //   db.WasteItem.findOne({
+  //   //     where: {
+  //   //       category: "Garbage"
+  //   //     }
+  //   //   }).then(function(result) {
+  //   //     let data = result.dataValues;
+  //   //     res.render("search", {
+  //   //       searchRes: data
+  //   //     });
+  //   //     console.log("got here. somekinda of db happneded. ", data);
+  //   //   });
+  //   // } catch (err) {
+  //   //   console.log(err);
+  //   // }
+  // });
 };
