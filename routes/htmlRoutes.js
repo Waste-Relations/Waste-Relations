@@ -61,7 +61,7 @@ module.exports = function(app) {
           name: "ROPE"
         }
       }).then(function(result) {
-        let data = result.dataValues;
+        let data = result;
         res.render("search", {
           searchRes: data
         });
@@ -71,22 +71,8 @@ module.exports = function(app) {
       console.log("this is ", err);
     }
   });
-  // hello just disabled
-  // app.get("/search:search", isAuthenticated, function(req, res) {
-  //   // try {
-  //   //   db.WasteItem.findOne({
-  //   //     where: {
-  //   //       category: "Garbage"
-  //   //     }
-  //   //   }).then(function(result) {
-  //   //     let data = result.dataValues;
-  //   //     res.render("search", {
-  //   //       searchRes: data
-  //   //     });
-  //   //     console.log("got here. somekinda of db happneded. ", data);
-  //   //   });
-  //   // } catch (err) {
-  //   //   console.log(err);
-  //   // }
-  // });
+  app.get("/additem", isAuthenticated, function(req, res) {
+    res.render("additem")
+ });
+
 };
