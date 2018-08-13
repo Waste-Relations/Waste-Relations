@@ -2,16 +2,30 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
+// passport
+const session = require("express-session");
+// Requiring passport as we've configured it
+const passport = require("./config/passport");
 
+// Setting up port and requiring models for syncing
 const db = require("./models");
-
-const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Creating express app and configuring middleware needed for authentication
+const app = express();
 // Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
 app.use(bodyParser.json());
+// Static directory
 app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Handlebars
 app.engine(
