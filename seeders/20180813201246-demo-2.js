@@ -2,10 +2,10 @@
 const data = require("./output.js");
 module.exports = {
   up: queryInterface => {
-    return queryInterface.bulkInsert("wasteitems", data, {});
+    return queryInterface.bulkInsert("WasteItems", data, {});
   },
 
   down: queryInterface => {
-    return queryInterface.bulkDelete("wasteitems", null, {});
+    return queryInterface.bulkDelete("WasteItems", null, {});
   }
 };
