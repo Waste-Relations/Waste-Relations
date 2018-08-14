@@ -66,4 +66,9 @@ module.exports = function(app) {
     console.log(req.body);
     res.json(req.body);
   });
+  //add item route
+  app.post("/api/additem", function(req, res) {
+    db.WasteItem.create(req.body);
+    res.json(true);
+  });
 };
