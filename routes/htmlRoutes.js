@@ -72,7 +72,6 @@ module.exports = function(app) {
     }
   });
   app.get("/additem", isAuthenticated, function(req, res) {
-    res.render("additem")
- });
-
+    res.render("additem");
+  });
 };
