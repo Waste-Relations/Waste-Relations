@@ -21,15 +21,6 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  // app.get("/search", function(req, res) {
-  //   // If the user already has an account send them to the search page
-  //   req.user ? res.render("search") : res.render("index");
-
-  //   // db.WasteItem.findOne({}).then(function() {
-  //   //   res.render("result");
-  //   // });
-  // });
-
   // NOt tested
   app.get("/result", function(req, res) {
     // If the user already has an account send them to the result page
@@ -64,40 +55,23 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
-    // res.render("search");
     try {
       db.WasteItem.findOne({
         where: {
           name: "ROPE"
         }
       }).then(function(result) {
-        let data = result.dataValues;
+        let data = result;
         res.render("search", {
           searchRes: data
         });
         console.log("got here. somekinda of db happneded. ", data);
       });
     } catch (err) {
-      console.log(err);
+      console.log("this is ", err);
     }
-    // res.sendFile(path.join(__dirname, "../public/search.html"));
   });
-  // hello just disabled
-  // app.get("/search:search", isAuthenticated, function(req, res) {
-  //   // try {
-  //   //   db.WasteItem.findOne({
-  //   //     where: {
-  //   //       category: "Garbage"
-  //   //     }
-  //   //   }).then(function(result) {
-  //   //     let data = result.dataValues;
-  //   //     res.render("search", {
-  //   //       searchRes: data
-  //   //     });
-  //   //     console.log("got here. somekinda of db happneded. ", data);
-  //   //   });
-  //   // } catch (err) {
-  //   //   console.log(err);
-  //   // }
-  // });
+  app.get("/additem", isAuthenticated, function(req, res) {
+    res.render("additem");
+  });
 };
