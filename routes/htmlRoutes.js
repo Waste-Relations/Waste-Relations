@@ -53,7 +53,7 @@ module.exports = function(app) {
   });
 
   // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  // If a user who is not logged in tries to access these routes will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
     try {
       db.WasteItem.findOne({
@@ -73,5 +73,8 @@ module.exports = function(app) {
   });
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
+  });
+  app.get("/donate", isAuthenticated, function(req, res) {
+    res.render("donate")
   });
 };
