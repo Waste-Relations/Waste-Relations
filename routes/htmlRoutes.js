@@ -42,11 +42,6 @@ module.exports = function(app) {
     req.user ? res.render("pickup") : res.render("index");
   });
 
-  app.get("/donation", function(req, res) {
-    // If the user already has an account send them to the donation page
-    req.user ? res.render("donation") : res.render("index");
-  });
-
   app.get("/charity", function(req, res) {
     // If the user already has an account send them to the charity page
     req.user ? res.render("charity") : res.render("index");
@@ -65,7 +60,7 @@ module.exports = function(app) {
         res.render("search", {
           searchRes: data
         });
-        console.log("got here. somekinda of db happneded. ", data);
+        // console.log("got here. somekinda of db happneded. ", data);
       });
     } catch (err) {
       console.log("this is ", err);
@@ -75,6 +70,6 @@ module.exports = function(app) {
     res.render("additem");
   });
   app.get("/donate", isAuthenticated, function(req, res) {
-    res.render("donate")
+    res.render("donate");
   });
 };

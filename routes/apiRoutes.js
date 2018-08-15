@@ -67,8 +67,20 @@ module.exports = function(app) {
     res.json(req.body);
   });
   //add item route
-  app.post("/api/additem", function(req, res) {
+  app.post("/api/search-result", function(req, res) {
     db.WasteItem.create(req.body);
+    res.json(true);
+  });
+  
+  app.get("/api/dropoff", function(req, res) {
+    db.DropOff.findAll({}).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  app.post("/api/dropoff", function(req, res) {
+    console.log(req.body)
+    db.DropOff.create(req.body);
     res.json(true);
   });
 };

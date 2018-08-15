@@ -6,7 +6,7 @@ $(document).ready(function() {
     }
     //grab user input from form    
     $('#submit').on("click", function(e) {
-        event.preventDefault();
+        e.preventDefault();
         var $itemname = $('#name').val().trim();
         var $itemCategory = $('#where').val().trim();
         var $itemSubCat = $("#how").val().trim();
@@ -17,7 +17,6 @@ $(document).ready(function() {
             category: titleCase($itemCategory),
             subCategory: $itemSubCat.toLowerCase(),
         }
-        $.post("/api/additem", newTrash).then(function() { 
-        });
+        $.post("/api/search-result", newTrash);
     });
 });
