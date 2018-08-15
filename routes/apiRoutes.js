@@ -71,7 +71,7 @@ module.exports = function(app) {
     db.WasteItem.create(req.body);
     res.json(true);
   });
-  
+
   app.get("/api/dropoff", function(req, res) {
     db.DropOff.findAll({}).then(function(result) {
       res.json(result);
@@ -79,7 +79,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/dropoff", function(req, res) {
-    console.log(req.body)
+    console.log(req.body);
     db.DropOff.create(req.body);
     res.json(true);
   });
