@@ -3,15 +3,11 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  // req.user ? { status: "User Signed In" } : { status: "User Signed Off" };
-  // Load index page
+  
   app.get("/", function(req, res) {
-    // db.WasteItem.findAll({}).then(function() {
     req.user
       ? res.render("index", { status: "User Signed In" })
       : res.render("index", { status: "User Signed Off" });
-    // res.render("index", status);
-    // });
   });
 
   app.get("/login", function(req, res) {
@@ -54,24 +50,7 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access these routes will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
-    try {
-      db.WasteItem.findOne({
-        where: {
-          name: "ROPE"
-        }
-      }).then(function(result) {
-        let data = result;
-        res.render("search", {
-          values: {
-            searchRes: data
-            // status: "User Signed In"
-          }
-        });
-        // console.log("got here. somekinda of db happneded. ", data);
-      });
-    } catch (err) {
-      console.log("this is: ", err);
-    }
+    res.render("search")
   });
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");

@@ -61,7 +61,14 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-  //
+
+  //get one item from the search
+  app.post("/api/search", function (req, res) {
+    db.WasteItem.findOne({ where: req.body })
+      .then(queryResult => {
+        console.log(queryResult.dataValues);
+      });
+  });
 
   //add item route
   app.post("/api/items", function(req, res) {
