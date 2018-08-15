@@ -56,18 +56,15 @@ module.exports = function(app) {
   });
 
   // Get all waste data
-  app.get("/api/search-result", function(req, res) {
+  app.get("/api/items", function(req, res) {
     db.WasteItem.findAll({}).then(function(result) {
       res.json(result);
     });
   });
   //
-  app.get("/api/search", function(req, res) {
-    console.log(req.body);
-    res.json(req.body);
-  });
+  
   //add item route
-  app.post("/api/search-result", function(req, res) {
+  app.post("/api/items", function(req, res) {
     db.WasteItem.create(req.body);
     res.json(true);
   });

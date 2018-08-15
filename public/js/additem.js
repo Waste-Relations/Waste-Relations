@@ -27,6 +27,6 @@ $(document).ready(function() {
       category: titleCase($itemCategory),
       subCategory: $itemSubCat.toLowerCase()
     };
-    $.post("/api/additem", newTrash);
+    $.post("/api/items", newTrash);
   });
 });
