@@ -79,7 +79,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/dropoff", function(req, res) {
-    console.log(req.body);
     db.DropOff.create(req.body);
     res.json(true);
   });
