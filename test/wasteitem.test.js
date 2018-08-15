@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 var request;
 
-describe("GET /api/search", function() {
+describe("GET /api/search-result", function() {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
   beforeEach(function() {
@@ -32,7 +32,7 @@ describe("GET /api/search", function() {
       }
     ]).then(function() {
       // Request the route that returns all examples
-      request.get("/api/search").end(function(err, res) {
+      request.get("/api/search-result").end(function(err, res) {
         var responseStatus = res.status;
         var responseBody = res.body;
 
