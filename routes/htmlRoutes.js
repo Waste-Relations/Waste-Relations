@@ -61,17 +61,18 @@ module.exports = function(app) {
         }
       }).then(function(result) {
         let data = result;
-        res.render("search", {
-          values: {
-            searchRes: data
-            // status: "User Signed In"
-          }
-        });
-        // console.log("got here. somekinda of db happneded. ", data);
+        // res.render("search", {
+        //   values: {
+        //     searchRes: data
+        //     // status: "User Signed In"
+        //   }
+        // });
+        console.log(data);
       });
     } catch (err) {
       console.log("this is: ", err);
     }
+    res.render("search");
   });
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
