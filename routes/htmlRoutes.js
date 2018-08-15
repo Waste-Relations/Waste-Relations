@@ -67,8 +67,10 @@ module.exports = function(app) {
       }).then(function(result) {
         let data = result.dataValues;
         res.render("search", {
-          searchRes: data,
-          status: "User Signed In"
+          values: {
+            searchRes: data
+            // status: "User Signed In"
+          }
         });
         console.log("got here. somekinda of db happneded. ", data);
       });
