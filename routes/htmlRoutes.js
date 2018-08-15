@@ -3,10 +3,14 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
+  // req.user ? { status: "User Signed In" } : { status: "User Signed Off" };
   // Load index page
   app.get("/", function(req, res) {
     // db.WasteItem.findAll({}).then(function() {
-    res.render("index");
+    req.user
+      ? res.render("index", { status: "User Signed In" })
+      : res.render("index", { status: "User Signed Off" });
+    // res.render("index", status);
     // });
   });
 
@@ -58,12 +62,15 @@ module.exports = function(app) {
       }).then(function(result) {
         let data = result;
         res.render("search", {
-          searchRes: data
+          values: {
+            searchRes: data
+            // status: "User Signed In"
+          }
         });
         // console.log("got here. somekinda of db happneded. ", data);
       });
     } catch (err) {
-      console.log("this is ", err);
+      console.log("this is: ", err);
     }
   });
   app.get("/additem", isAuthenticated, function(req, res) {
