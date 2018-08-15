@@ -62,7 +62,7 @@ module.exports = function(app) {
     });
   });
   //
-  
+
   //add item route
   app.post("/api/items", function(req, res) {
     db.WasteItem.create(req.body);
