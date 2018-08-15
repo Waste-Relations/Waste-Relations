@@ -9,8 +9,6 @@ $(document).keypress(e => {
       name: userSearch
     }
     console.log("You entered ", userSearch);
-    $.post("/api/search", itemSearched).then(function() {
-      console.log("posted search");
-    });
+    $.post("/api/search", itemSearched);
   }
 });

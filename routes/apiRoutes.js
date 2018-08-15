@@ -62,18 +62,24 @@ module.exports = function(app) {
     });
   });
 
-  //get one item from the search
-  app.post("/api/search", function (req, res) {
-    db.WasteItem.findOne({ where: req.body })
-      .then(queryResult => {
-        console.log(queryResult.dataValues);
-      });
+  //item search
+  app.post("/api/search", function(req, res) {
+    console.log(res); //just to pass eslint test
+    db.WasteItem.findOne({ where: req.body }).then(queryResult => {
+      console.log(queryResult.dataValues);
+    });
   });
+  // app.get("/api/search", function (req, res) {
+  //   db.WasteItem.findOne({ where: req.body })
+  //     .then(queryResult => {
+  //       res.json(queryResult.dataValues);
+  //     });
+  // });
 
   //add item route
   app.post("/api/items", function(req, res) {
+    console.log(res);
     db.WasteItem.create(req.body);
-    res.json(true);
   });
 
   app.get("/api/dropoff", function(req, res) {
@@ -83,6 +89,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/dropoff", function(req, res) {
+    console.log(res); //eslint test
     db.DropOff.create(req.body);
     res.json(true);
   });
