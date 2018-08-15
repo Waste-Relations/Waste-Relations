@@ -8,8 +8,8 @@
   },
   "test": {
     "username": "root",
-    "password": "SQL_PASSWORD",
-    "database": "database_test",
+    "password": "motdepasse",
+    "database": "wastedb",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

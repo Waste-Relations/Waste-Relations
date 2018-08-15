@@ -42,18 +42,13 @@ module.exports = function(app) {
     req.user ? res.render("pickup") : res.render("index");
   });
 
-  app.get("/donation", function(req, res) {
-    // If the user already has an account send them to the donation page
-    req.user ? res.render("donation") : res.render("index");
-  });
-
   app.get("/charity", function(req, res) {
     // If the user already has an account send them to the charity page
     req.user ? res.render("charity") : res.render("index");
   });
 
   // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  // If a user who is not logged in tries to access these routes will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
     try {
       db.WasteItem.findOne({
@@ -65,7 +60,7 @@ module.exports = function(app) {
         res.render("search", {
           searchRes: data
         });
-        console.log("got here. somekinda of db happneded. ", data);
+        // console.log("got here. somekinda of db happneded. ", data);
       });
     } catch (err) {
       console.log("this is ", err);
@@ -73,5 +68,8 @@ module.exports = function(app) {
   });
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
+  });
+  app.get("/donate", isAuthenticated, function(req, res) {
+    res.render("donate");
   });
 };
