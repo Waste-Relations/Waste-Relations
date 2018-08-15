@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Waste</title>
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  {{{body}}}
+  <nav class="pa3 pa4-ns">
+    <a class="link dim black b f6 f5-ns dib mr3 logoName" href="/" title="Home">Waste Relations</a>
+    <a class="link dim gray    f6 f5-ns dib mr3" href="/profile" title="About">Profile</a>
+    <a class="link dim gray    f6 f5-ns dib mr3" href="/search" title="About">Search</a>
+  </nav>
+  <div class="container">
+    {{{body}}}
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123735008-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123735008-1');
+  </script>
+
 </body>
 
 </html>

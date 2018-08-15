@@ -1,0 +1,32 @@
+<div>
+  <img id="logoIcon" src="../img/logo-v2.gif" alt="Logo Icon" />
+  <h3>What are you throwing out?</h3>
+</div>
+
+<div>
+  <form>
+    <input type="text" name="search" id="searchBox" placeholder="Search">
+  </form>
+</div>
+
+<div>
+  <ul id="list" class="itemlist">
+    {{#each searchRes}}
+    <li data-id="{{this.id}}" class="list-group-item">
+      {{this.name}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div>
+  <p>
+    <a href="/logout">Logout</a>
+  </p>
+  <p>
+    <a href="/additem">Add item to our database</a>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/search.js"></script>

@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  flex-direction: column;
+  border: green soild 5px;
+  /*  */
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  /*  */
+  /* background: linear-gradient(-45deg, #00C9FF, #92FE9D);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite; */
+}
+
+.logoName {
+  color: linear-gradient(-45deg, #00C9FF, #92FE9D);
+  /* background-size: 400% 400%; */
+  animation: Gradient 15s ease infinite;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+.container {
+  /* width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden; */
+  /*  */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: green soild 5px;
+  /*  */
+}
+
+#logoIcon {
+  width: 250px;
+}
