@@ -69,7 +69,7 @@ module.exports = function(app) {
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
   });
-  app.get("/donate", isAuthenticated, function(req, res) {
-    res.render("donate");
+  app.get("/dropoff", isAuthenticated, function(req, res) {
+    res.render("dropoff");
   });
 };
