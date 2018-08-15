@@ -1,14 +1,20 @@
+<link rel="stylesheet" href="css/login.css">
 <div>
   <img id="logoIcon" src="../img/logo-v2.gif" alt="Logo Icon" />
   <h3>What are you throwing out?</h3>
 </div>
 
 <div>
-  <form>
-    <input type="text" name="search" id="searchBox" placeholder="Search">
-  </form>
+  {{!--
+  <form> --}} {{!--
+    <input type="text" name="search" id="searchBox" placeholder="Search"> </form> --}}
 </div>
 
+<div class="mt3">
+  {{!--
+  <label class="db fw4 lh-copy f6" for="email-address">Search</label> --}}
+  <input class="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="Search" id="searchBox" placeholder="Search">
+</div>
 <div>
   <ul id="list" class="itemlist">
     {{#each searchRes}}
