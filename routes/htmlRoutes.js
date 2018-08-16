@@ -78,17 +78,9 @@ module.exports = function(app) {
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
   });
-<<<<<<< HEAD
-  
-  app.get("/dropoff", function(req, res){
-    res.render("dropoff");
-  });
-
-=======
   app.get("/dropoff", isAuthenticated, function(req, res) {
     res.render("dropoff");
   });
->>>>>>> 9690a3514f697af9778b87528d77c92a74eb6cf8
 };
 
 
