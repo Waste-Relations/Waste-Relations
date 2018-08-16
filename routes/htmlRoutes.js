@@ -69,7 +69,6 @@ module.exports = function(app) {
           status: "User Signed In"
         });
         // .statusCode(200);
-        // console.log("results are: ", data);
       });
     } catch (err) {
       console.log("this is: ", err);
