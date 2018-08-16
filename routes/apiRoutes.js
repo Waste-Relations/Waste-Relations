@@ -76,10 +76,13 @@ module.exports = function(app) {
     });
   });
   //
-  app.get("/api/search/:name", function(req, res) {
-    db.WasteItem.findone({ where: req.body.name }).then(function(result) {
-      res.json(result);
-    });
+  app.get("/api/search/:search", function(req, res) {
+    db.WasteItem.findOne({ where: { name: req.params.search } }).then(
+      queryResult => {
+        console.log(queryResult.dataValues);
+        res.json(queryResult.dataValues);
+      }
+    );
   });
 
   //add item route

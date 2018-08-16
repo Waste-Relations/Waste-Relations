@@ -50,21 +50,25 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access these routes will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
     // console.log(req.body);
-    res.render("search");
+    res.render("search", {
+      status: "User Signed In"
+    });
   });
   //
-  app.get("/search/:search", function(req, res) {
+  app.get("/search/:search", isAuthenticated, function(req, res) {
+    const ulookUp = req.params.search;
     try {
       db.WasteItem.findOne({
-        where: { name: req.params.search }
+        where: { name: ulookUp }
       }).then(function(result) {
         let data = result;
         res.render("search", {
           values: {
             searchRes: data
-            // status: "User Signed In"
-          }
+          },
+          status: "User Signed In"
         });
+        // .statusCode(200);
         // console.log("results are: ", data);
       });
     } catch (err) {
