@@ -61,20 +61,26 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-
+  //
   //item search
   app.post("/api/search", function(req, res) {
-    console.log(res); //just to pass eslint test
     db.WasteItem.findOne({ where: req.body }).then(queryResult => {
       console.log(queryResult.dataValues);
+      res.json(queryResult.dataValues);
     });
   });
-  // app.get("/api/search", function (req, res) {
-  //   db.WasteItem.findOne({ where: req.body })
-  //     .then(queryResult => {
-  //       res.json(queryResult.dataValues);
-  //     });
-  // });
+  //
+  app.get("/api/search", function(req, res) {
+    db.WasteItem.findAll({}).then(function(result) {
+      res.json(result);
+    });
+  });
+  //
+  app.get("/api/search/:name", function(req, res) {
+    db.WasteItem.findone({ where: req.body.name }).then(function(result) {
+      res.json(result);
+    });
+  });
 
   //add item route
   app.post("/api/items", function(req, res) {
@@ -89,8 +95,8 @@ module.exports = function(app) {
   });
 
   app.post("/api/dropoff", function(req, res) {
-    console.log(res); //eslint test
+    // console.log(res); //eslint test
     db.DropOff.create(req.body);
-    res.json(true);
+    res.statusCode(201).json(true);
   });
 };

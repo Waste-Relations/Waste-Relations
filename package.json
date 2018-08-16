@@ -8,7 +8,7 @@
     "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
     "test": "npm run lint",
-    "seed-run": "node_modules/.bin/sequelize db:seed:all"
+    "seed": "node_modules/.bin/sequelize db:seed:all"
   },
   "license": "ISC",
   "dependencies": {

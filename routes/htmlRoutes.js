@@ -46,34 +46,32 @@ module.exports = function(app) {
     req.user ? res.render("pickup") : res.render("index");
   });
 
-  app.get("/charity", function(req, res) {
-    // If the user already has an account send them to the charity page
-    req.user ? res.render("charity") : res.render("index");
-  });
-
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access these routes will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
+    // console.log(req.body);
+    res.render("search");
+  });
+  //
+  app.get("/search/:search", function(req, res) {
     try {
       db.WasteItem.findOne({
-        where: {
-          name: "ROPE"
-        }
+        where: { name: req.params.search }
       }).then(function(result) {
         let data = result;
-        // res.render("search", {
-        //   values: {
-        //     searchRes: data
-        //     // status: "User Signed In"
-        //   }
-        // });
-        console.log(data);
+        res.render("search", {
+          values: {
+            searchRes: data
+            // status: "User Signed In"
+          }
+        });
+        // console.log("results are: ", data);
       });
     } catch (err) {
       console.log("this is: ", err);
     }
-    res.render("search");
   });
+
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
   });
