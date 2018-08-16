@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "password",
+=======
+    "password": "SQL_PASSWORD",
+>>>>>>> 9690a3514f697af9778b87528d77c92a74eb6cf8
     "database": "wastedb",
     "host": "127.0.0.1",
     "dialect": "mysql"

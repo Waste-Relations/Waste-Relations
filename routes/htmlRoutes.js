@@ -3,10 +3,14 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
+  // req.user ? { status: "User Signed In" } : { status: "User Signed Off" };
   // Load index page
   app.get("/", function(req, res) {
     // db.WasteItem.findAll({}).then(function() {
-    res.render("index");
+    req.user
+      ? res.render("index", { status: "User Signed In" })
+      : res.render("index", { status: "User Signed Off" });
+    // res.render("index", status);
     // });
   });
 
@@ -42,43 +46,49 @@ module.exports = function(app) {
     req.user ? res.render("pickup") : res.render("index");
   });
 
-  app.get("/donation", function(req, res) {
-    // If the user already has an account send them to the donation page
-    req.user ? res.render("donation") : res.render("index");
-  });
-
-  app.get("/charity", function(req, res) {
-    // If the user already has an account send them to the charity page
-    req.user ? res.render("charity") : res.render("index");
-  });
-
   // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  // If a user who is not logged in tries to access these routes will be redirected to the signup page
   app.get("/search", isAuthenticated, function(req, res) {
+    // console.log(req.body);
+    res.render("search", {
+      status: "User Signed In"
+    });
+  });
+  //
+  app.get("/search/:search", isAuthenticated, function(req, res) {
+    const ulookUp = req.params.search;
     try {
       db.WasteItem.findOne({
-        where: {
-          name: "ROPE"
-        }
+        where: { name: ulookUp }
       }).then(function(result) {
         let data = result;
         res.render("search", {
-          searchRes: data
+          values: {
+            searchRes: data
+          },
+          status: "User Signed In"
         });
-        console.log("got here. somekinda of db happneded. ", data);
+        // .statusCode(200);
       });
     } catch (err) {
-      console.log("this is ", err);
+      console.log("this is: ", err);
     }
   });
+
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem");
   });
+<<<<<<< HEAD
   
   app.get("/dropoff", function(req, res){
     res.render("dropoff");
   });
 
+=======
+  app.get("/dropoff", isAuthenticated, function(req, res) {
+    res.render("dropoff");
+  });
+>>>>>>> 9690a3514f697af9778b87528d77c92a74eb6cf8
 };
 
 

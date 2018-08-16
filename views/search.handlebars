@@ -1,23 +1,50 @@
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+<link rel="stylesheet" type="text/css" href="/css/result.css">
 <div>
   <img id="logoIcon" src="../img/logo-v2.gif" alt="Logo Icon" />
   <h3>What are you throwing out?</h3>
 </div>
 
 <div>
-  <form>
-    <input type="text" name="search" id="searchBox" placeholder="Search">
-  </form>
+  {{!--
+  <form> --}} {{!--
+    <input type="text" name="search" id="searchBox" placeholder="Search"> </form> --}}
 </div>
 
-<div>
-  <ul id="list" class="itemlist">
-    {{#each searchRes}}
-    <li data-id="{{this.id}}" class="list-group-item">
-      {{this.name}}
-    </li>
-    {{/each}}
-  </ul>
+<div class="mt3">
+  {{!--
+  <label class="db fw4 lh-copy f6" for="email-address">Search</label> --}}
+  <input class="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="Search" id="searchBox" placeholder="Search">
 </div>
+
+
+<div class="pa4">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw8 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">Name</th>
+          <th class="fw6 tl pa3 bg-white">Category</th>
+          <th class="fw6 tl pa3 bg-white">subCategory</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        {{#each values}}
+        <tr class="stripe-dark">
+          <td class="pa3">{{this.name}}</td>
+          <td class="pa3">{{this.category}}</td>
+          <td class="pa3">{{this.subCategory}}</td>
+          {{/each}}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
 
 <div>
   <p>
@@ -26,7 +53,10 @@
   <p>
     <a href="/additem">Add item to our database</a>
   </p>
+  <p>
+    <a href="/dropoff">Find drop off locations to donate</a>
+  </p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript" src="/js/search.js"></script>
