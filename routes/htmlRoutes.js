@@ -80,7 +80,7 @@ module.exports = function(app) {
   });
 
   app.get("/dropoff", isAuthenticated, function(req, res) {
-    db.DropOff.findAll({}).then(function(result){
+    db.DropOff.findAll({}).then(function(result) {
       // let data = JSON.stringify(result);
       // let data = JSON.stringify(result);
       // console.log(result[0].dataValues);
@@ -89,13 +89,11 @@ module.exports = function(app) {
         renData.push(element.dataValues);
       });
       console.log(renData);
-      res.render("dropoff",{ renData
-      
-     });
+      res.render("dropoff", {
+        values: renData
+      });
       // res.json(result);
     });
     // res.render("dropoff");
   });
 };
-
-
