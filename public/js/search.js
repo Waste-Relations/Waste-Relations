@@ -9,6 +9,11 @@ $(document).keypress(e => {
       name: userSearch
     }
     console.log("You entered ", userSearch);
-    $.post("/api/search", itemSearched);
+    let currentURL = window.location.origin;
+    let endPoint = "/search/";
+    let fullURL = currentURL + endPoint + userSearch;
+    console.log(fullURL);
+    window.location.href = fullURL;
+    // $.post(fullURL);
   }
 });

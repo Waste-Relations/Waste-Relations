@@ -1,12 +1,10 @@
 $(document).ready(function() {
-  
   $("#submit").on("click", function(e) {
     e.preventDefault();
     var $itemname = $("#name")
       .val()
       .trim();
-    var $itemCategory = $("#where")
-      .val();
+    var $itemCategory = $("#where").val();
     var $itemSubCat = $("#how")
       .val()
       .trim();
