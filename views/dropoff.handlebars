@@ -1,35 +1,37 @@
+<link rel="stylesheet" type="text/css" href="/css/dropoff.css">
+<link rel="stylesheet" type="text/css" href="/css/result.css">
 <h1>Drop Off Locations</h1>
 
 
 <div class=container>
-    <h1>Please fill in the form below</h1>
-    <form action="/action_page.php">
-        Organisation:
-        <br>
-        <input type="text" name="organisation" id="organisation">
-        <br> Province:
-        <br>
-        <select id="selectProvince">
-            <option value="ON">Ontario</option>
-        </select>
-        <br> City/Town:
-        <br>
-        <select id="selectCity">
-            <option value="TORONTO">Toronto</option>
-        </select>
-        <br> Postal Code:
-        <br>
-        <input type="text" name="postalCode" id="postalCode">
-        <br> Address:
-        <br>
-        <input type="text" name="thoroughFare" id="thoroughFare">
-        <br>
-        <br>
-        <input type="submit" value="Submit" id="submit">
-    </form>
+  <h1>Please fill in the form below</h1>
+  <form action="/action_page.php">
+    Organisation:
+    <br>
+    <input type="text" name="organisation" id="organisation">
+    <br> Province:
+    <br>
+    <select id="selectProvince">
+      <option value="ON">Ontario</option>
+    </select>
+    <br> City/Town:
+    <br>
+    <select id="selectCity">
+      <option value="TORONTO">Toronto</option>
+    </select>
+    <br> Postal Code:
+    <br>
+    <input type="text" name="postalCode" id="postalCode">
+    <br> Address:
+    <br>
+    <input type="text" name="thoroughFare" id="thoroughFare">
+    <br>
+    <br>
+    <input type="submit" value="Submit" id="submit">
+  </form>
 </div>
 
-<div class="pa4">
+<div class="pa4 tableView">
   <div class="overflow-auto">
     <table class="f6 w-100 mw8 center" cellspacing="0">
       <thead>
@@ -44,7 +46,7 @@
       </thead>
       <tbody class="lh-copy">
         {{#each renData}}
-        <tr class="stripe-dark">
+        <tr id="this.id" class="stripe-dark">
           <td class="pa3">{{this.country}}</td>
           <td class="pa3">{{this.organisation}}</td>
           <td class="pa3">{{this.administrativeArea}}</td>
@@ -60,4 +62,3 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/dropoff.js"></script>
-

@@ -68,7 +68,6 @@ module.exports = function(app) {
           },
           status: "User Signed In"
         });
-        // .statusCode(200);
       });
     } catch (err) {
       console.log("this is: ", err);
@@ -80,20 +79,19 @@ module.exports = function(app) {
   });
 
   app.get("/dropoff", isAuthenticated, function(req, res) {
-    db.DropOff.findAll({}).then(function(result) {
-      // let data = JSON.stringify(result);
-      // let data = JSON.stringify(result);
-      // console.log(result[0].dataValues);
-      let renData = [];
-      result.forEach(element => {
-        renData.push(element.dataValues);
+    try {
+      db.DropOff.findAll({}).then(function(result) {
+        let renData = [];
+        result.forEach(element => {
+          renData.push(element.dataValues);
+        });
+        console.log(renData);
+        res.render("dropoff", {
+          values: renData
+        });
       });
-      console.log(renData);
-      res.render("dropoff", {
-        values: renData
-      });
-      // res.json(result);
-    });
-    // res.render("dropoff");
+    } catch (err) {
+      console.log("this is the err:", err);
+    }
   });
 };
