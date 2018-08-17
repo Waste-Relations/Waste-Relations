@@ -58,15 +58,14 @@ module.exports = function(app) {
   // Get all waste data
   app.get("/api/items", function(req, res) {
     db.WasteItem.findAll({}).then(function(result) {
-      res.json(result);
+      res.json(result).statusCode(200);
     });
   });
   //
   //item search
   app.post("/api/search", function(req, res) {
     db.WasteItem.findOne({ where: req.body }).then(queryResult => {
-      console.log(queryResult.dataValues);
-      res.json(queryResult.dataValues);
+      res.json(queryResult.dataValues).statusCode(200);
     });
   });
   //
@@ -79,7 +78,6 @@ module.exports = function(app) {
   app.get("/api/search/:search", function(req, res) {
     db.WasteItem.findOne({ where: { name: req.params.search } }).then(
       queryResult => {
-        console.log(queryResult.dataValues);
         res.json(queryResult.dataValues);
       }
     );
@@ -87,8 +85,9 @@ module.exports = function(app) {
 
   //add item route
   app.post("/api/items", function(req, res) {
-    console.log(res);
-    db.WasteItem.create(req.body);
+    db.WasteItem.create(req.body).then(result => {
+      res.json(result).statusCode(201);
+    });
   });
 
   app.get("/api/dropoff", function(req, res) {
@@ -99,7 +98,8 @@ module.exports = function(app) {
 
   app.post("/api/dropoff", function(req, res) {
     // console.log(res); //eslint test
-    db.DropOff.create(req.body);
-    res.statusCode(201).json(true);
+    db.DropOff.create(req.body).then(result => {
+      res.json(result);
+    });
   });
 };
