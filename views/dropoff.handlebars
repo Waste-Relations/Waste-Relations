@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/css/dropoff.css">
+<link rel="stylesheet" type="text/css" href="/css/login.css">
 <link rel="stylesheet" type="text/css" href="/css/result.css">
 <h1>Drop Off Locations</h1>
 
@@ -8,23 +9,23 @@
   <form action="/action_page.php">
     Organisation:
     <br>
-    <input type="text" name="organisation" id="organisation">
+    <input type="text" name="organisation" id="organisation" class="pa2 input-reset ba bg-transparent w-100 measure">
     <br> Province:
     <br>
-    <select id="selectProvince">
+    <select id="selectProvince" class="pa2 ba bg-transparent w-100 measure">
       <option value="ON">Ontario</option>
     </select>
     <br> City/Town:
     <br>
-    <select id="selectCity">
+    <select id="selectCity" class="pa2 ba bg-transparent w-100 measure">
       <option value="TORONTO">Toronto</option>
     </select>
     <br> Postal Code:
     <br>
-    <input type="text" name="postalCode" id="postalCode">
+    <input type="text" name="postalCode" id="postalCode" class="pa2 input-reset ba bg-transparent w-100 measure">
     <br> Address:
     <br>
-    <input type="text" name="thoroughFare" id="thoroughFare">
+    <input type="text" name="thoroughFare" id="thoroughFare" class="pa2 input-reset ba bg-transparent w-100 measure">
     <br>
     <br>
     <input type="submit" value="Submit" id="submit">
@@ -33,24 +34,51 @@
 
 <div class="pa4 tableView">
   <div class="overflow-auto">
-    <table class="f6 w-100 mw8 center" cellspacing="0">
+    <table id="myTable" class="f6 w-100 mw8 center" cellspacing="0">
       <thead>
         <tr class="stripe-dark">
-          <th class="fw6 tl pa3 bg-white">Organisation</th>
+          <th id="theader" class="fw6 tl pa3 bg-white">Organisation</th>
           <th class="fw6 tl pa3 bg-white">City/Town</th>
           <th class="fw6 tl pa3 bg-white">Postal Code</th>
           <th class="fw6 tl pa3 bg-white">Address</th>
+          <th class="fw6 tl pa3 bg-white">DEL/ED</th>
         </tr>
       </thead>
       <tbody class="lh-copy">
         {{#each values}}
-        <tr id="this.id" class="stripe-dark">
+        <tr id={{this.id}} class="stripe-dark rowView">
           <td class="pa3">{{this.organisation}}</td>
           <td class="pa3">{{this.locality}}</td>
           <td class="pa3">{{this.postalCode}}</td>
           <td class="pa3">{{this.thoroughFare}}</td>
-          {{/each}}
+          <td class="pa3">
+            <button class="delete" data-value={{this.id}} onclick="deleteRequest({{this.id}});">X</button>
+            <script type="text/javascript">
+              function deleteRequest(locationId) {
+                console.log("pressed buttonnnnnnn")
+                document.getElementById(locationId).remove()
+                $.ajax({
+                  type: "DELETE",
+                  url: "/api/dropoff/delete",
+                  data: {locationId: locationId}
+                });
+              };
+            </script>
+            <button id="edit" data-value={{this.id}} onclick="updateRequest({{this.id}});">O</button>
+            <script type="text/javascript">
+              function updateRequest(locationId) {
+                console.log("pressed update buttonnnnnnn")
+                
+                //$.ajax({
+                //  type: "PUT",
+                //  url: "/api/dropoff/update",
+               // //  data: {locationId: locationId}
+                //});
+              };
+            </script>
+          </td>
         </tr>
+        {{/each}}
       </tbody>
     </table>
   </div>
