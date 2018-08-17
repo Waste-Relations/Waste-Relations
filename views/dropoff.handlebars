@@ -34,10 +34,10 @@
 
 <div class="pa4 tableView">
   <div class="overflow-auto">
-    <table class="f6 w-100 mw8 center" cellspacing="0">
+    <table id="myTable" class="f6 w-100 mw8 center" cellspacing="0">
       <thead>
         <tr class="stripe-dark">
-          <th class="fw6 tl pa3 bg-white">Organisation</th>
+          <th id="theader" class="fw6 tl pa3 bg-white">Organisation</th>
           <th class="fw6 tl pa3 bg-white">City/Town</th>
           <th class="fw6 tl pa3 bg-white">Postal Code</th>
           <th class="fw6 tl pa3 bg-white">Address</th>
@@ -52,8 +52,30 @@
           <td class="pa3">{{this.postalCode}}</td>
           <td class="pa3">{{this.thoroughFare}}</td>
           <td class="pa3">
-            <button id="delete">X</button>
-            <button id="edit">O</button>
+            <button class="delete" data-value={{this.id}} onclick="deleteRequest({{this.id}});">X</button>
+            <script type="text/javascript">
+              function deleteRequest(locationId) {
+                console.log("pressed buttonnnnnnn")
+                document.getElementById(locationId).remove()
+                $.ajax({
+                  type: "DELETE",
+                  url: "/api/dropoff/delete",
+                  data: {locationId: locationId}
+                });
+              };
+            </script>
+            <button id="edit" data-value={{this.id}} onclick="updateRequest({{this.id}});">O</button>
+            <script type="text/javascript">
+              function updateRequest(locationId) {
+                console.log("pressed update buttonnnnnnn")
+                
+                //$.ajax({
+                //  type: "PUT",
+                //  url: "/api/dropoff/update",
+               // //  data: {locationId: locationId}
+                //});
+              };
+            </script>
           </td>
         </tr>
         {{/each}}

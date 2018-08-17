@@ -102,4 +102,15 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+  // app.get("/api/dropoff/delete", function (req, res) {
+  //   res.status(200);
+  // });
+  app.delete("/api/dropoff/delete", function(req, res) {
+    db.DropOff.destroy({where: {id: req.body.locationId}})
+    res.sendStatus(204);
+  });
+  app.delete("/api/dropoff/update", function(req, res) {
+    // db.DropOff.destroy({where: {id: req.body.locationId}})
+    // res.sendStatus(204);
+  });
 };

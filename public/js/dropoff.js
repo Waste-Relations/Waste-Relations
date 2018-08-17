@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $("#submit").on("click", function(e) {
     e.preventDefault();
-    console.log("clicked");
     var $organisation = $("#organisation")
       .val()
       .trim()
@@ -50,13 +49,12 @@ $(document).ready(function() {
       alert("verify organisation and address are not left blank");
     }
   });
-  $("#delete").click(result => {
-    const item = $(this)
-      .parent()
-      .parent();
-    const maybeTr = item.parents("tr").html();
-    console.log("item", maybeTr);
-    // console.log("id", id);
-    console.log(result);
-  });
+  //$("#myDiv")[0] === document.getElementById("myDiv");
+  // $(".delete").click(result => {
+  //   console.log($("#theader")[0]); 
+  //   console.log($("#theader"));
+  //   console.log($("#theader")[0].baseURI);
+  //   console.log($("#theader")[0].getAttribute("id"));
+  //   console.log($(".delete")[0].getAttribute("data-value"));
+  // });
 });
