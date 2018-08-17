@@ -14,7 +14,8 @@ $(document).ready(function() {
       .trim();
     var $postalCode = $("#postalCode")
       .val()
-      .trim();
+      .trim()
+      .toUpperCase();
     var $thoroughFare = $("#thoroughFare")
       .val()
       .trim();
@@ -39,7 +40,10 @@ $(document).ready(function() {
         thoroughFare: $thoroughFare
       };
       console.log(newDropOff);
-      $.post("/api/dropoff", newDropOff);
+      $.post("/api/dropoff", newDropOff).then(result => {
+        console.log(result);
+        location.reload();
+      });
     } else if (postalCodeStatus === false) {
       alert("Postal code is invalid");
     } else if ($thoroughFare === "" || $organisation === "") {
