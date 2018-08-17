@@ -49,12 +49,4 @@ $(document).ready(function() {
       alert("verify organisation and address are not left blank");
     }
   });
-  //$("#myDiv")[0] === document.getElementById("myDiv");
-  // $(".delete").click(result => {
-  //   console.log($("#theader")[0]); 
-  //   console.log($("#theader"));
-  //   console.log($("#theader")[0].baseURI);
-  //   console.log($("#theader")[0].getAttribute("id"));
-  //   console.log($(".delete")[0].getAttribute("data-value"));
-  // });
 });

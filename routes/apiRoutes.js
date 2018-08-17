@@ -97,20 +97,26 @@ module.exports = function(app) {
   });
 
   app.post("/api/dropoff", function(req, res) {
-    // console.log(res); //eslint test
     db.DropOff.create(req.body).then(result => {
       res.json(result);
     });
   });
-  // app.get("/api/dropoff/delete", function (req, res) {
-  //   res.status(200);
-  // });
   app.delete("/api/dropoff/delete", function(req, res) {
     db.DropOff.destroy({ where: { id: req.body.locationId } });
     res.sendStatus(204);
   });
-  app.delete("/api/dropoff/update", function(req, res) {
-    // db.DropOff.destroy({where: {id: req.body.locationId}})
-    res.sendStatus(204);
+  app.put("/api/dropoff/update", function(req, res) {
+    db.DropOff.update(
+      {
+        organisation: req.body.organisation,
+        postalCode: req.body.postalCode,
+        thoroughFare: req.body.thoroughFare
+      },
+      {
+        where: { id: req.body.locationId }
+      }
+    ).then(function() {
+      res.sendStatus(204);
+    });
   });
 };
