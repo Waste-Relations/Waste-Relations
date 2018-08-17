@@ -65,7 +65,6 @@ module.exports = function(app) {
   //item search
   app.post("/api/search", function(req, res) {
     db.WasteItem.findOne({ where: req.body }).then(queryResult => {
-      console.log(queryResult.dataValues);
       res.json(queryResult.dataValues);
     });
   });
@@ -79,7 +78,6 @@ module.exports = function(app) {
   app.get("/api/search/:search", function(req, res) {
     db.WasteItem.findOne({ where: { name: req.params.search } }).then(
       queryResult => {
-        console.log(queryResult.dataValues);
         res.json(queryResult.dataValues);
       }
     );
@@ -87,7 +85,6 @@ module.exports = function(app) {
 
   //add item route
   app.post("/api/items", function(req, res) {
-    console.log(res);
     db.WasteItem.create(req.body);
   });
 

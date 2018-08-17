@@ -10,11 +10,15 @@ $(document).ready(function() {
       .trim();
 
     //let's create an object containing our form info
-    var newTrash = {
-      name: $itemname.toUpperCase(),
-      category: $itemCategory,
-      subCategory: $itemSubCat.toLowerCase()
-    };
-    $.post("/api/items", newTrash);
+    if ($itemname !== "" && $itemSubCat !== "") {
+      var newTrash = {
+        name: $itemname.toUpperCase(),
+        category: $itemCategory,
+        subCategory: $itemSubCat.toLowerCase()
+      };
+      $.post("/api/items", newTrash);
+    } else {
+      alert("no blanks pls");
+    }
   });
 });
