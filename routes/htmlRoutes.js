@@ -32,21 +32,11 @@ module.exports = function(app) {
     req.user ? res.render("result") : res.render("index");
   });
 
-  app.get("/map", function(req, res) {
-    // If the user already has an account send them to the map page
-    req.user ? res.render("map") : res.render("index");
-  });
-
   app.get("/profile", function(req, res) {
     // If the user already has an account send them to the profile page
     req.user
       ? res.render("profile", { status: "User Signed In" })
       : res.render("index");
-  });
-
-  app.get("/pickup", function(req, res) {
-    // If the user already has an account send them to the pickup page
-    req.user ? res.render("pickup") : res.render("index");
   });
 
   // Here we've add our isAuthenticated middleware to this route.
@@ -71,7 +61,6 @@ module.exports = function(app) {
           },
           status: "User Signed In"
         });
-        // .statusCode(200);
       });
     } catch (err) {
       console.log("this is: ", err);
@@ -83,20 +72,19 @@ module.exports = function(app) {
   });
 
   app.get("/dropoff", isAuthenticated, function(req, res) {
-    db.DropOff.findAll({}).then(function(result) {
-      // let data = JSON.stringify(result);
-      // let data = JSON.stringify(result);
-      // console.log(result[0].dataValues);
-      let renData = [];
-      result.forEach(element => {
-        renData.push(element.dataValues);
+    try {
+      db.DropOff.findAll({}).then(function(result) {
+        let renData = [];
+        result.forEach(element => {
+          renData.push(element.dataValues);
+        });
+        console.log(renData);
+        res.render("dropoff", {
+          values: renData
+        });
       });
-      console.log(renData);
-      res.render("dropoff", {
-        values: renData
-      });
-      // res.json(result);
-    });
-    // res.render("dropoff");
+    } catch (err) {
+      console.log("this is the err:", err);
+    }
   });
 };
