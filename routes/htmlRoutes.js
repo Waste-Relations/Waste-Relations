@@ -80,7 +80,8 @@ module.exports = function(app) {
         });
         console.log(renData);
         res.render("dropoff", {
-          values: renData
+          values: renData,
+          status: "User Signed In"
         });
       });
     } catch (err) {
