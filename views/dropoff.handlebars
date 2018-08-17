@@ -43,16 +43,16 @@
         </tr>
       </thead>
       <tbody class="lh-copy">
-        {{#each renData}}
-        <tr class="stripe-dark">
-          <td class="pa3">{{this.country}}</td>
-          <td class="pa3">{{this.organisation}}</td>
-          <td class="pa3">{{this.administrativeArea}}</td>
-          <td class="pa3">{{this.locality}}</td>
-          <td class="pa3">{{this.postalCode}}</td>
-          <td class="pa3">{{this.thoroughFare}}</td>
-          {{/each}}
-        </tr>
+        {{#each values}}
+          <tr class="stripe-dark">
+            <td class="pa3">{{renData[0].country}}</td>
+            <td class="pa3">{{this.organisation}}</td>
+            <td class="pa3">{{this.administrativeArea}}</td>
+            <td class="pa3">{{this.locality}}</td>
+            <td class="pa3">{{this.postalCode}}</td>
+            <td class="pa3">{{this.thoroughFare}}</td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
   </div>
