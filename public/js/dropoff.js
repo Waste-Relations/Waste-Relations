@@ -50,4 +50,13 @@ $(document).ready(function() {
       alert("verify organisation and address are not left blank");
     }
   });
+  $("#delete").click(result => {
+    const item = $(this)
+      .parent()
+      .parent();
+    const maybeTr = item.parents("tr").html();
+    console.log("item", maybeTr);
+    // console.log("id", id);
+    console.log(result);
+  });
 });
