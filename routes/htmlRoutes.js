@@ -1,7 +1,6 @@
 const db = require("../models");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
 module.exports = function(app) {
   // req.user ? { status: "User Signed In" } : { status: "User Signed Off" };
   // Load index page
@@ -9,11 +8,13 @@ module.exports = function(app) {
     // db.WasteItem.findAll({}).then(function() {
     req.user
       ? res.render("index", { status: "User Signed In" })
-      : res.render("index", { status: "User Signed Off" });
+      : res.render("index", { status: null });
     // res.render("index", status);
     // });
   });
-
+  app.get("/about", function(req, res) {
+    res.render("about", { status: null });
+  });
   app.get("/login", function(req, res) {
     if (req.user) {
       res.redirect("/search");
@@ -38,7 +39,9 @@ module.exports = function(app) {
 
   app.get("/profile", function(req, res) {
     // If the user already has an account send them to the profile page
-    req.user ? res.render("profile") : res.render("index");
+    req.user
+      ? res.render("profile", { status: "User Signed In" })
+      : res.render("index");
   });
 
   app.get("/pickup", function(req, res) {
@@ -76,9 +79,24 @@ module.exports = function(app) {
   });
 
   app.get("/additem", isAuthenticated, function(req, res) {
-    res.render("additem");
+    res.render("additem", { status: "User Signed In" });
   });
+
   app.get("/dropoff", isAuthenticated, function(req, res) {
-    res.render("dropoff");
+    db.DropOff.findAll({}).then(function(result) {
+      // let data = JSON.stringify(result);
+      // let data = JSON.stringify(result);
+      // console.log(result[0].dataValues);
+      let renData = [];
+      result.forEach(element => {
+        renData.push(element.dataValues);
+      });
+      console.log(renData);
+      res.render("dropoff", {
+        values: renData
+      });
+      // res.json(result);
+    });
+    // res.render("dropoff");
   });
 };
