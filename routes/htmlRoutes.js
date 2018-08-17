@@ -81,7 +81,22 @@ module.exports = function(app) {
   app.get("/additem", isAuthenticated, function(req, res) {
     res.render("additem", { status: "User Signed In" });
   });
+
   app.get("/dropoff", isAuthenticated, function(req, res) {
-    res.render("dropoff", { status: "User Signed In" });
+    db.DropOff.findAll({}).then(function(result) {
+      // let data = JSON.stringify(result);
+      // let data = JSON.stringify(result);
+      // console.log(result[0].dataValues);
+      let renData = [];
+      result.forEach(element => {
+        renData.push(element.dataValues);
+      });
+      console.log(renData);
+      res.render("dropoff", {
+        values: renData
+      });
+      // res.json(result);
+    });
+    // res.render("dropoff");
   });
 };

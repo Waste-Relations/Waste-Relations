@@ -1,21 +1,5 @@
-<h1> donation page prototype</h1>
-<ul>
-    <li>
-        C - user fills in form
-    </li>
-    <li>
-        R - user should see a list of the dropoff locations in our db
-    </li>
-    <li>
-        U - user should be able to update a location *
-    </li>
-    <li>
-        D - user should be able to delete a location if it's closed down *
-    </li>
-    <li>
-        *: should decide on actual process
-    </li>
-</ul>
+<h1>Drop Off Locations</h1>
+
 
 <div class=container>
     <h1>Please fill in the form below</h1>
@@ -45,5 +29,35 @@
     </form>
 </div>
 
+<div class="pa4">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw8 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">Country</th>
+          <th class="fw6 tl pa3 bg-white">Organisation</th>
+          <th class="fw6 tl pa3 bg-white">Province</th>
+          <th class="fw6 tl pa3 bg-white">City/Town</th>
+          <th class="fw6 tl pa3 bg-white">Postal Code</th>
+          <th class="fw6 tl pa3 bg-white">Address</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        {{#each renData}}
+        <tr class="stripe-dark">
+          <td class="pa3">{{this.country}}</td>
+          <td class="pa3">{{this.organisation}}</td>
+          <td class="pa3">{{this.administrativeArea}}</td>
+          <td class="pa3">{{this.locality}}</td>
+          <td class="pa3">{{this.postalCode}}</td>
+          <td class="pa3">{{this.thoroughFare}}</td>
+          {{/each}}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/dropoff.js"></script>
+
