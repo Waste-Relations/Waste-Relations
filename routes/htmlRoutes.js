@@ -32,21 +32,11 @@ module.exports = function(app) {
     req.user ? res.render("result") : res.render("index");
   });
 
-  app.get("/map", function(req, res) {
-    // If the user already has an account send them to the map page
-    req.user ? res.render("map") : res.render("index");
-  });
-
   app.get("/profile", function(req, res) {
     // If the user already has an account send them to the profile page
     req.user
       ? res.render("profile", { status: "User Signed In" })
       : res.render("index");
-  });
-
-  app.get("/pickup", function(req, res) {
-    // If the user already has an account send them to the pickup page
-    req.user ? res.render("pickup") : res.render("index");
   });
 
   // Here we've add our isAuthenticated middleware to this route.

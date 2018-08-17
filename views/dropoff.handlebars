@@ -36,20 +36,16 @@
     <table class="f6 w-100 mw8 center" cellspacing="0">
       <thead>
         <tr class="stripe-dark">
-          <th class="fw6 tl pa3 bg-white">Country</th>
           <th class="fw6 tl pa3 bg-white">Organisation</th>
-          <th class="fw6 tl pa3 bg-white">Province</th>
           <th class="fw6 tl pa3 bg-white">City/Town</th>
           <th class="fw6 tl pa3 bg-white">Postal Code</th>
           <th class="fw6 tl pa3 bg-white">Address</th>
         </tr>
       </thead>
       <tbody class="lh-copy">
-        {{#each renData}}
+        {{#each values}}
         <tr id="this.id" class="stripe-dark">
-          <td class="pa3">{{this.country}}</td>
           <td class="pa3">{{this.organisation}}</td>
-          <td class="pa3">{{this.administrativeArea}}</td>
           <td class="pa3">{{this.locality}}</td>
           <td class="pa3">{{this.postalCode}}</td>
           <td class="pa3">{{this.thoroughFare}}</td>
