@@ -57,8 +57,12 @@ $(document).ready(function() {
       var content = this.nextElementSibling;
       if (content.style.display === "flex") {
         content.style.display = "none";
+        $(".tableView").show();
       } else {
         content.style.display = "flex";
+        $(".tableView")
+          .removeAttr("style")
+          .hide();
       }
     });
   }

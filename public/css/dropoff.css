@@ -27,8 +27,12 @@
   /* background-color: #f1f1f1; */
 }
 
+.tableView {
+  overflow-y: scroll;
+  overflow: auto;
+}
+
 .dataBlock {
-  clear: both;
   width: 80%;
   height: fit-content;
   display: flex;
