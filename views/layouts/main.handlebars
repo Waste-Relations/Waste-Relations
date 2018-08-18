@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Waste</title>
   <link rel="stylesheet" type="text/css" href="/css/nav.css">
+  <link rel="stylesheet" type="text/css" href="/css/login.css">
+  <link rel="stylesheet" type="text/css" href="/css/result.css">
+  <link rel="stylesheet" type="text/css" href="/css/dropoff.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -15,11 +18,11 @@
   <nav class="pa3 pa4-ns" id="navbar">
     <a class="link dim gray    f6 f5-ns dib mr3" href="/about" title="About" id="about">About</a>
     {{#if status}}
-      <a class="link dim black b f6 f5-ns dib mr3 logoName" href="/search" title="Home">Search</a>
-      <a class="link dim gray    f6 f5-ns dib mr3" href="/profile" title="Profile">{{{status}}}</a>
-      <a href="/logout">Logout</a>
+    <a class="link dim black b f6 f5-ns dib mr3 logoName" href="/search" title="Home">Search</a>
+    <a class="link dim gray    f6 f5-ns dib mr3" href="/profile" title="Profile">{{{status}}}</a>
+    <a href="/logout">Logout</a>
     {{/if}}
-    
+
   </nav>
   <div class="container">
     {{{body}}}
