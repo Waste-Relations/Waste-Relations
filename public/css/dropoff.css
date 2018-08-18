@@ -32,6 +32,10 @@
   overflow: auto;
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+}
+
 .dataBlock {
   width: 80%;
   height: fit-content;

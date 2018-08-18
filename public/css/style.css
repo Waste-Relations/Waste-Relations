@@ -54,7 +54,17 @@ body {
 /* Medium devices (landscape tablets, 768px and up) */
 
 @media only screen and (min-width: 768px) {
-  background-color: #00C9FF;
+  .container {
+    width: 100%;
+  }
+  .tableView {
+    width: 100%;
+    /* background-color: #00C9FF; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
