@@ -32,11 +32,11 @@ $(document).ready(function() {
       $organisation !== ""
     ) {
       var newDropOff = {
-        organisation: $organisation,
-        administrativeArea: $administrativeArea,
-        locality: $locality,
-        postalCode: $postalCode.replace(/\s/g, ""),
-        thoroughFare: $thoroughFare
+        organisation: $organisation.trim(),
+        administrativeArea: $administrativeArea.trim(),
+        locality: $locality.trim(),
+        postalCode: $postalCode.replace(/\s/g, "").trim(),
+        thoroughFare: $thoroughFare.trim()
       };
       console.log(newDropOff);
       $.post("/api/dropoff", newDropOff).then(result => {
@@ -78,42 +78,49 @@ function updateRequest(locationId) {
     .innerHTML;
   document.getElementById(
     `organisation-${locationId}`
-  ).innerHTML = `<input type="text" id="orgInput-${locationId}" value="${orgDefault}">`;
+  ).innerHTML = `<input type="text" id="orgInput-${locationId}" value="${orgDefault.trim()}">`;
   document.getElementById(
     `postalCode-${locationId}`
-  ).innerHTML = `<input type="text" id="postalCodeInput-${locationId}" value="${postalDefault}">`;
+  ).innerHTML = `<input type="text" id="postalCodeInput-${locationId}" value="${postalDefault.trim()}">`;
   document.getElementById(
     `thoroughFare-${locationId}`
-  ).innerHTML = `<input type="text" id="addressInput-${locationId}" value="${addressDefault}">`;
+  ).innerHTML = `<input type="text" id="addressInput-${locationId}" value="${addressDefault.trim()}">`;
   document.getElementById(locationId).addEventListener("keypress", function(e) {
     if (e.keyCode === 13) {
       console.log("you just pressed enter dude");
       var newOrgValue = document.getElementById(`orgInput-${locationId}`).value;
       var newPostalValue = document.getElementById(
         `postalCodeInput-${locationId}`
-      ).value;
+      ).value.toUpperCase().trim();
       var newAddressValue = document.getElementById(
         `addressInput-${locationId}`
       ).value;
+      const postalCodeStatus =
+      /[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]/.test(
+        newPostalValue
+      ) ||
+      /[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ] ?[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]/.test(
+        newPostalValue
+      );
       console.log(newOrgValue, "---", newPostalValue, "---", newAddressValue);
       e.stopPropagation();
-      if (newOrgValue && newPostalValue && newAddressValue) {
+      if (newOrgValue && newPostalValue && newAddressValue && postalCodeStatus) {
         console.log("values seem right");
         $.ajax({
           type: "PUT",
           url: "/api/dropoff/update",
           data: {
             locationId: locationId,
-            organisation: newOrgValue,
-            postalCode: newPostalValue,
-            thoroughFare: newAddressValue
+            organisation: newOrgValue.trim().toUpperCase(),
+            postalCode: newPostalValue.replace(/\s/g, ""),
+            thoroughFare: newAddressValue.trim()
           }
         });
         setTimeout(function() {
           location.reload();
-        }, 50);
+        }, 1000);
       } else {
-        alert("cannot have blank fields");
+        alert("cannot have blank/invalid fields");
       }
     }
   });
@@ -126,6 +133,25 @@ function deleteRequest(locationId) {
     url: "/api/dropoff/delete",
     data: { locationId: locationId }
   });
+}
+
+function revertEdit(locationId) {
+  console.log("hellooooooo")
+  var orgDefault = document.getElementById(`organisation-${locationId}`)
+    .innerHTML;
+  var postalDefault = document.getElementById(`postalCode-${locationId}`)
+    .innerHTML;
+  var addressDefault = document.getElementById(`thoroughFare-${locationId}`)
+    .innerHTML;
+  document.getElementById(
+    `organisation-${locationId}`
+  ).innerHTML = orgDefault.trim();
+  document.getElementById(
+    `postalCode-${locationId}`
+  ).innerHTML = postalDefault.trim();
+  document.getElementById(
+    `thoroughFare-${locationId}`
+  ).innerHTML = addressDefault.trim();
 }
 console.log(deleteRequest);
 console.log(updateRequest);
