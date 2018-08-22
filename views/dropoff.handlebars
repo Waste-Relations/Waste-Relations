@@ -53,10 +53,8 @@
       </div>
       <div class="right">
         <button class="delete" data-value={{this.id}} onclick="deleteRequest({{this.id}});"> X </button>
-        <button class="edit" id="edit-{{this.id}}" onclick="updateRequest({{this.id}});">edit</button>
+        <button class="edit" id="edit-{{this.id}}" onclick="updateRequest({{this.id}}); this.onclick = null;">edit</button>
       </div>
-
-
     </div>
     {{/each}} {{!-- </div> --}}
 </div>
