@@ -12,8 +12,13 @@ Find donation centers for items that are still in good condition.
 
 ## Demo
 
-<video width="320" height="240" autoplay>
-  <source src="./video/Login Screen_VP8.webm" type="video/mp4">
+<video controls="controls" autoplay="autoplay">
+  <source src="Waste_x264.mp4" type="video/mp4" />
 </video>
+
+<!--  -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/86ORzX0dPFk?controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+## Preview
 
 <a href="https://wasterelations.herokuapp.com/" target="_blank">Live Preview</a>
