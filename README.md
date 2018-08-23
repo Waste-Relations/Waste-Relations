@@ -10,4 +10,23 @@ Find donation centers for items that are still in good condition.
 - npm test - checks linting and mocha
 - npm seed - migrations and seeding via Sequelize CLI.
 
+## Demo
+
+### Start up
+
+<img src="video\giphy.gif" width="400" height="300" />
+
+### Login
+
+<img src="video/login.gif" width="400" height="300" />
+
+### Search
+
+<img src="video/search.gif" width="400" height="300" />
+
+### Responsive Web Design
+
+<img src="video/responsive.gif" width="400" height="300" />
+## Preview
+
 <a href="https://wasterelations.herokuapp.com/" target="_blank">Live Preview</a>
