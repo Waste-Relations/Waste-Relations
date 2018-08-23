@@ -24,18 +24,6 @@ Find donation centers for items that are still in good condition.
 
 <img src="video/search.gif" width="400" height="300" />
 
-### Add New Item
-
-<img src="video/AddNew.gif" width="400" height="300" />
-
-### Add New Location
-
-<img src="video/NewLocation.gif" width="400" height="300" />
-
-### Edit Location
-
-<img src="video/EditLocation.gif" width="400" height="300" />
-
 ### Responsive Web Design
 
 <img src="video/responsive.gif" width="400" height="300" />
