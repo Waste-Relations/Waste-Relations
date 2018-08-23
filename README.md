@@ -11,13 +11,7 @@ Find donation centers for items that are still in good condition.
 - npm seed - migrations and seeding via Sequelize CLI.
 
 ## Demo
-
-<video controls="controls" autoplay="autoplay">
-  <source src="Waste_x264.mp4" type="video/mp4" />
-</video>
-
-<!--  -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/86ORzX0dPFk?controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="420" height="315" src="https://youtu.be/86ORzX0dPFk" frameborder="0" allowfullscreen></iframe>
 
 ## Preview
 
